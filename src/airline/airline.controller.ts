@@ -1,14 +1,17 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { AirlineService } from './airline.service';
+import { CreateAirlineDto } from './dto/create-airline.dto';
+import { JwtAuthGuard } from 'src/jwt/jwt.guard';
 
 @Controller('airline')
 export class AirlineController {
   constructor(private readonly airlineService: AirlineService) {}
 
-  // @Post()
-  // create(@Body() createAirlineDto: CreateAirlineDto) {
-  //   return this.airlineService.create(createAirlineDto);
-  // }
+  @Post()
+  @UseGuards(JwtAuthGuard)
+  create(@Body() createAirlineDto: CreateAirlineDto, @Req() req: any) {
+    return this.airlineService.create(createAirlineDto, req.user.id);
+  }
 
   // @Get()
   // findAll() {
