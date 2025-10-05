@@ -18,11 +18,11 @@ export class AirlineService {
     return this.airlineRepository.save(createAirlineDto)
   }
 
+  findOne(id: number) {
+    return this.airlineRepository.findOne({ where: { airline_id: id }});
+  }
   // findAll() {
   //   return `This action returns all airline`;
-  // }
-  // findOne(id: number) {
-  //   return `This action returns a #${id} airline`;
   // }
   // update(id: number, updateAirlineDto: UpdateAirlineDto) {
   //   return `This action updates a #${id} airline`;

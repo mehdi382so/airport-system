@@ -1,6 +1,8 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { EmployeeService } from './employee.service';
 import { LoginEmployeeDto } from './dto/login-employee.dto';
+import { JwtAuthGuard } from 'src/jwt/jwt.guard';
+import { CreateEmployeeDto } from './dto/create-employee.dto';
 
 @Controller('employee')
 export class EmployeeController {
@@ -9,6 +11,12 @@ export class EmployeeController {
   @Post('login')
   login(@Body() loginEmployeeDto: LoginEmployeeDto) {
     return this.employeeService.login(loginEmployeeDto);
+  }
+
+  @Post()
+  @UseGuards(JwtAuthGuard)
+  create(@Body() createEmployeeDto: CreateEmployeeDto, @Req() req: any) {
+    return this.employeeService.createEmployee(createEmployeeDto, req.user.id)
   }
 
   // @Post()

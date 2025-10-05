@@ -10,5 +10,6 @@ import { Airline } from './entities/airline.entity';
   ],
   controllers: [AirlineController],
   providers: [AirlineService],
+  exports: [AirlineService]
 })
 export class AirlineModule {}
