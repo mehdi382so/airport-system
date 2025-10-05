@@ -16,7 +16,7 @@ export class EmployeeController {
   @Post()
   @UseGuards(JwtAuthGuard)
   create(@Body() createEmployeeDto: CreateEmployeeDto, @Req() req: any) {
-    return this.employeeService.createEmployee(createEmployeeDto, req.user.id)
+    return this.employeeService.createEmployee(createEmployeeDto, req.user.id);
   }
 
   // @Post()

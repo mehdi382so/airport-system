@@ -7,11 +7,7 @@ import { JwtModule } from 'src/jwt/jwt.module';
 import { AirlineModule } from 'src/airline/airline.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Employee]),
-    JwtModule,
-    AirlineModule
-  ],
+  imports: [TypeOrmModule.forFeature([Employee]), JwtModule, AirlineModule],
   controllers: [EmployeeController],
   providers: [EmployeeService],
 })

@@ -6,20 +6,20 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class AirlineService {
-   constructor(
+  constructor(
     @InjectRepository(Airline)
-    private readonly airlineRepository: Repository<Airline>
+    private readonly airlineRepository: Repository<Airline>,
   ) {}
 
   create(createAirlineDto: CreateAirlineDto, userId: number) {
-    if(userId !== -1)
-      throw new ForbiddenException('You can not create airline')
-    
-    return this.airlineRepository.save(createAirlineDto)
+    if (userId !== -1)
+      throw new ForbiddenException('You can not create airline');
+
+    return this.airlineRepository.save(createAirlineDto);
   }
 
   findOne(id: number) {
-    return this.airlineRepository.findOne({ where: { airline_id: id }});
+    return this.airlineRepository.findOne({ where: { airline_id: id } });
   }
   // findAll() {
   //   return `This action returns all airline`;

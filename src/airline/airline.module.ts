@@ -5,11 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Airline } from './entities/airline.entity';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Airline])
-  ],
+  imports: [TypeOrmModule.forFeature([Airline])],
   controllers: [AirlineController],
   providers: [AirlineService],
-  exports: [AirlineService]
+  exports: [AirlineService],
 })
 export class AirlineModule {}
