@@ -4,6 +4,10 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from './jwt/jwt.module';
+import { AirlineModule } from './airline/airline.module';
+import { EmployeeModule } from './employee/employee.module';
+import { Airline } from './airline/entities/airline.entity';
+import { Employee } from './employee/entities/employee.entity';
 
 @Module({
   imports: [
@@ -20,12 +24,14 @@ import { JwtModule } from './jwt/jwt.module';
         username: configService.get<string>('DB_USER'),
         password: configService.get<string>('DB_PASS'),
         database: configService.get<string>('DB_NAME'),
-        entities: [],
+        entities: [Airline, Employee],
         logging: false,
         synchronize: true,
       }),
     }),
     JwtModule,
+    AirlineModule,
+    EmployeeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
