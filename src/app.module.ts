@@ -8,6 +8,8 @@ import { AirlineModule } from './airline/airline.module';
 import { EmployeeModule } from './employee/employee.module';
 import { Airline } from './airline/entities/airline.entity';
 import { Employee } from './employee/entities/employee.entity';
+import { AirportModule } from './airport/airport.module';
+import { Airport } from './airport/entities/airport.entity';
 
 @Module({
   imports: [
@@ -24,7 +26,7 @@ import { Employee } from './employee/entities/employee.entity';
         username: configService.get<string>('DB_USER'),
         password: configService.get<string>('DB_PASS'),
         database: configService.get<string>('DB_NAME'),
-        entities: [Airline, Employee],
+        entities: [Airline, Employee, Airport],
         logging: false,
         synchronize: true,
       }),
@@ -32,6 +34,7 @@ import { Employee } from './employee/entities/employee.entity';
     JwtModule,
     AirlineModule,
     EmployeeModule,
+    AirportModule,
   ],
   controllers: [AppController],
   providers: [AppService],
