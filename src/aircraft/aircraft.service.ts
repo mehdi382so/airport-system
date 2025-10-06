@@ -35,12 +35,12 @@ export class AircraftService {
     return this.aircraftRepository.save(aircraft);
   }
 
+  findOne(id: number) {
+    return this.aircraftRepository.findOne({ where: { aircraft_id: id } });
+  }
+
   // findAll() {
   //   return `This action returns all aircraft`;
-  // }
-
-  // findOne(id: number) {
-  //   return `This action returns a #${id} aircraft`;
   // }
 
   // update(id: number, updateAircraftDto: UpdateAircraftDto) {

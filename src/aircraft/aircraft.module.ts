@@ -9,5 +9,6 @@ import { Aircraft } from './entities/aircraft.entity';
   imports: [EmployeeModule, TypeOrmModule.forFeature([Aircraft])],
   controllers: [AircraftController],
   providers: [AircraftService],
+  exports: [AircraftService],
 })
 export class AircraftModule {}

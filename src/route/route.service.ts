@@ -57,12 +57,12 @@ export class RouteService {
     return this.routeRepository.save(createRouteDto);
   }
 
+  findOne(id: number) {
+    return this.routeRepository.findOne({ where: { route_id: id } });
+  }
+
   // findAll() {
   //   return `This action returns all route`;
-  // }
-
-  // findOne(id: number) {
-  //   return `This action returns a #${id} route`;
   // }
 
   // update(id: number, updateRouteDto: UpdateRouteDto) {
