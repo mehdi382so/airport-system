@@ -10,5 +10,6 @@ import { AirlineModule } from 'src/airline/airline.module';
   imports: [TypeOrmModule.forFeature([Employee]), JwtModule, AirlineModule],
   controllers: [EmployeeController],
   providers: [EmployeeService],
+  exports: [EmployeeService],
 })
 export class EmployeeModule {}
