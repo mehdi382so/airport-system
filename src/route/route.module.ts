@@ -4,9 +4,10 @@ import { RouteController } from './route.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Route } from './entities/route.entity';
 import { EmployeeModule } from 'src/employee/employee.module';
+import { AirportModule } from 'src/airport/airport.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Route]), EmployeeModule],
+  imports: [TypeOrmModule.forFeature([Route]), EmployeeModule, AirportModule],
   controllers: [RouteController],
   providers: [RouteService],
 })

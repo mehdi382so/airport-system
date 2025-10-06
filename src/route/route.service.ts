@@ -9,6 +9,7 @@ import { Route } from './entities/route.entity';
 import { Repository } from 'typeorm';
 import { CreateRouteDto } from './dto/create-route.dto';
 import { EmployeeService } from 'src/employee/employee.service';
+import { AirportService } from 'src/airport/airport.service';
 
 @Injectable()
 export class RouteService {
@@ -16,6 +17,7 @@ export class RouteService {
     @InjectRepository(Route)
     private readonly routeRepository: Repository<Route>,
     private readonly employeeService: EmployeeService,
+    private readonly airportService: AirportService,
   ) {}
 
   findByOriginAndDestination(origin: number, destination: number) {
@@ -36,6 +38,15 @@ export class RouteService {
       destination_airport_id,
     );
     if (routeExists) throw new ConflictException('Route already exists');
+
+    const originAirportExists =
+      await this.airportService.findOne(origin_airport_id);
+    const destinationAirportExists = await this.airportService.findOne(
+      destination_airport_id,
+    );
+
+    if (!originAirportExists || !destinationAirportExists)
+      throw new NotFoundException('Airports not found');
 
     const manager = await this.employeeService.findById(userId);
     if (!manager) throw new NotFoundException('Manager not found');

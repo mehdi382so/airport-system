@@ -17,12 +17,15 @@ export class AirportService {
 
     return this.airportRepository.save(createAirportDto);
   }
+
+  findOne(id: number) {
+    return this.airportRepository.findOne({ where: { airport_id: id } });
+  }
+
   // findAll() {
   //   return `This action returns all airport`;
   // }
-  // findOne(id: number) {
-  //   return `This action returns a #${id} airport`;
-  // }
+
   // update(id: number, updateAirportDto: UpdateAirportDto) {
   //   return `This action updates a #${id} airport`;
   // }
