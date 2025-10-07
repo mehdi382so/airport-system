@@ -18,6 +18,8 @@ import { FlightModule } from './flight/flight.module';
 import { Flight } from './flight/entities/flight.entity';
 import { SeatModule } from './seat/seat.module';
 import { Seat } from './seat/entities/seat.entity';
+import { PassengerModule } from './passenger/passenger.module';
+import { Passenger } from './passenger/entities/passenger.entity';
 
 @Module({
   imports: [
@@ -34,7 +36,16 @@ import { Seat } from './seat/entities/seat.entity';
         username: configService.get<string>('DB_USER'),
         password: configService.get<string>('DB_PASS'),
         database: configService.get<string>('DB_NAME'),
-        entities: [Airline, Employee, Airport, Aircraft, Route, Flight, Seat],
+        entities: [
+          Airline,
+          Employee,
+          Airport,
+          Aircraft,
+          Route,
+          Flight,
+          Seat,
+          Passenger,
+        ],
         logging: false,
         synchronize: true,
       }),
@@ -47,6 +58,7 @@ import { Seat } from './seat/entities/seat.entity';
     RouteModule,
     FlightModule,
     SeatModule,
+    PassengerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
